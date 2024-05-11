@@ -1,0 +1,1028 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": { 
+      "logAnalyticsIDnpe":{
+        "value": "<log analytics id for diagnostics>"
+      },
+      "remediation":{
+        "value": true
+      },
+      "RoleDefID":{
+        "value": [
+          "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+          "/providers/microsoft.authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+          "/providers/microsoft.authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293"
+      ]
+      },
+      "DiagConfigs": {
+        "value": [
+          {
+            "resource": "Azure Automation Accounts",
+            "name": "aa-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Azure Automation Accounts - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Automation/automationAccounts",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "timeGrain": null,
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ],
+            "logs": [
+              {
+                  "category": "JobLogs",
+                  "categoryGroup": null,
+                  "enabled": true,
+                  "retentionPolicy": {
+                      "days": 0,
+                      "enabled": false
+                  }
+              },
+              {
+                  "category": "JobStreams",
+                  "categoryGroup": null,
+                  "enabled": true,
+                  "retentionPolicy": {
+                      "days": 0,
+                      "enabled": false
+                  }
+              },
+              {
+                  "category": "DscNodeStatus",
+                  "categoryGroup": null,
+                  "enabled": true,
+                  "retentionPolicy": {
+                      "days": 0,
+                      "enabled": false
+                  }
+              },
+              {
+                  "category": "AuditEvent",
+                  "categoryGroup": null,
+                  "enabled": false,
+                  "retentionPolicy": {
+                      "days": 0,
+                      "enabled": false
+                  }
+              }
+          ]
+          },
+          {
+            "resource": "Public IPs",
+            "name": "pip-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Public IPs - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "timeGrain": null,
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ],
+            "logs": [
+              {
+                "category": "DDoSProtectionNotifications",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "DDoSMitigationFlowLogs",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "DDoSMitigationReports",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ]
+          },
+          {
+            "resource": "Load Balancers",
+            "name": "lb-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Load Balancers - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Network/loadBalancers",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "timeGrain": null,
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ],
+            "logs": [
+              {
+                "category": "LoadBalancerAlertEvent",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "LoadBalancerProbeHealthStatus",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ]
+          },
+          {
+            "resource": "Cognitive Services",
+            "name": "cognitive-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Cognitive Services - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.CognitiveServices/accounts",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "Audit",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "RequestResponse",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ]
+          },
+          {
+            "resource": "SQL Databases",
+            "name": "sqlDBs-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for SQL Databases - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Sql/servers/databases",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "SQLInsights",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "AutomaticTuning",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "QueryStoreRuntimeStatistics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "QueryStoreWaitStatistics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "Errors",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "DatabaseWaitStatistics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "Timeouts",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "Blocks",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "Deadlocks",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "Audit",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "SQLSecurityAuditEvents",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ]
+          },
+          {
+            "resource": "Application Gateways",
+            "name": "appGw-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Application Gateways - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Network/applicationGateways",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "ApplicationGatewayAccessLog",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "ApplicationGatewayPerformanceLog",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "ApplicationGatewayFirewallLog",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ]
+          },
+          {
+            "resource": "PostgreSQL Databases",
+            "name": "postgreSQL-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for PostgreSQL Databases - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.DBforPostgreSQL/servers",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "PostgreSQLLogs",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ]
+          },
+          {
+            "resource": "CDN Endpoints",
+            "name": "cdnEndpoints-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for CDN Endpoints - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Cdn/profiles/endpoints",
+            "metrics": [],
+            "logs": [
+              {
+                "category": "CoreAnalytics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ]
+          },
+          {
+            "resource": "Azure Firewalls",
+            "name": "firewall-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Azure Firewalls - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Network/azureFirewalls",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "AzureFirewallApplicationRule",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "AzureFirewallNetworkRule",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "AzureFirewallDnsProxy",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWNetworkRule",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWApplicationRule",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWNatRule",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWThreatIntel",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWIdpsSignature",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWDnsQuery",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWFqdnResolveFailure",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWFatFlow",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWFlowTrace",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWApplicationRuleAggregation",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWNetworkRuleAggregation",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "AZFWNatRuleAggregation",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            }
+            ]
+          },
+          {
+            "resource": "Azure Container Registries",
+            "name": "acr-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Azure Container Registries - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.ContainerRegistry/registries",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                  "category": "ContainerRegistryRepositoryEvents",
+                  "categoryGroup": null,
+                  "enabled": false,
+                  "retentionPolicy": {
+                      "days": 0,
+                      "enabled": false
+                  }
+              },
+              {
+                  "category": "ContainerRegistryLoginEvents",
+                  "categoryGroup": null,
+                  "enabled": false,
+                  "retentionPolicy": {
+                      "days": 0,
+                      "enabled": false
+                  }
+              }
+          ]
+          },
+          {
+            "resource": "Virtual Networks",
+            "name": "vnet-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Virtual Networks - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Network/virtualNetworks",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ],
+            "logs": [
+              {
+                "categoryGroup": "allLogs",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+              }
+              }
+            ]
+          },
+          {
+            "resource": "Virtual Machines",
+            "name": "vm-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Virtual Machines - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Compute/virtualMachines",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ],
+            "logs": []
+          },
+          {
+            "resource": "Virtual Machine Scale Sets",
+            "name": "vmss-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Virtual Machine Scale Sets - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Compute/virtualMachineScaleSets",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
+            ],
+            "logs": []
+          },
+          {
+            "resource": "Azure Kubernetes Service",
+            "name": "aks-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Azure Kubernetes Service - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.ContainerService/managedClusters",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "guard",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "kube-apiserver",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "kube-controller-manager",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "kube-scheduler",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "cluster-autoscaler",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "kube-audit",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "kube-audit-admin",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "cloud-controller-manager",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              },
+              {
+                "category": "csi-azuredisk-controller",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "csi-azurefile-controller",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "csi-snapshot-controller",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            }
+            ]
+          },
+          {
+            "resource": "Event Grid Topics",
+            "name": "eventGridTopic-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Event Grid Topics - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.EventGrid/topics",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "DeliveryFailures",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "PublishFailures",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "DataPlaneRequests",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            }
+            ]
+          },
+          {
+            "resource": "Event Grid Subscriptions",
+            "name": "eventGridSub-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Event Grid Subscriptions - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.EventGrid/eventSubscriptions",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": []
+          },
+          {
+            "resource": "Redis Cache",
+            "name": "redisCache-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Redis Cache - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Cache/redis",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+              {
+                "category": "ConnectedClientList",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            },
+            {
+                "category": "MSEntraAuthenticationAuditLog",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                }
+            }
+            ]
+          },
+          {
+            "resource": "Azure App Service Plans",
+            "name": "webServerFarm-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Azure App Service Plans - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Web/serverfarms",
+            "metrics": [
+              {
+                "category": "AllMetrics",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": []
+          },
+          {
+            "resource": "Storage Accounts",
+            "name": "storage-diagnostic-settings-policyDef",
+            "displayName": "Apply diagnostic settings for Storage Accounts - Log Analytics",
+            "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+            "type": "Microsoft.Storage/storageAccounts",
+            "metrics": [
+              {
+                "category": "Transaction",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                },
+                "timeGrain": null
+              }
+            ],
+            "logs": [
+            ]
+          },
+            {
+              "resource": "Application Insights",
+              "name": "appInsights-diagnostic-settings-policyDef",
+              "displayName": "Apply diagnostic settings for Application Insights - Log Analytics",
+              "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+              "type": "microsoft.insights/components",
+              "metrics": [
+                {
+                  "category": "AllMetrics",
+                  "enabled": true,
+                  "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                  },
+                  "timeGrain": null
+                }
+              ],
+              "logs": [
+                {
+                    "category": "AppAvailabilityResults",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppBrowserTimings",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppEvents",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppMetrics",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppDependencies",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppExceptions",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppPageViews",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppPerformanceCounters",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppRequests",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppSystemEvents",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "AppTraces",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                }
+            ]
+          },
+          {
+            "resource": "Log Analytics Workspaces",
+              "name": "logAnalytics-diagnostic-settings-policyDef",
+              "displayName": "Apply diagnostic settings for Log Analytics Workspaces - Log Analytics",
+              "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+              "type": "microsoft.operationalinsights/workspaces",
+              "metrics": [
+                {
+                  "category": "AllMetrics",
+                  "enabled": true,
+                  "retentionPolicy": {
+                    "days": 0,
+                    "enabled": false
+                  },
+                  "timeGrain": null
+                }
+              ],
+              "logs": [
+                {
+                    "category": "Audit",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                },
+                {
+                    "category": "SummaryLogs",
+                    "enabled": true,
+                    "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                    }
+                }
+            ]
+
+
+          }
+
+
+        ]
+      }
+    }
+  }
